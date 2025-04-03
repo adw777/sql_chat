@@ -3,6 +3,8 @@ import streamlit as st
 import pandas as pd
 from dotenv import load_dotenv
 
+# STREAMLIT APP -- GENERATES SQL & GIVES OUT THE QUERY RESULT!
+
 # Load environment variables from .env file
 load_dotenv()
 
@@ -30,11 +32,11 @@ st.write("Ask questions about blockchain data in natural language, and get SQL q
 st.sidebar.title("Configuration")
 
 # Database connection settings
-db_host = st.sidebar.text_input("Database Host", value=os.getenv("DB_HOST", "localhost"))
-db_port = st.sidebar.text_input("Database Port", value=os.getenv("DB_PORT", "5432"))
-db_name = st.sidebar.text_input("Database Name", value=os.getenv("DB_NAME", "blockchain_db"))
-db_user = st.sidebar.text_input("Database Username", value=os.getenv("DB_USER", "postgres"))
-db_password = st.sidebar.text_input("Database Password", value=os.getenv("DB_PASSWORD", "postgres"), type="password")
+db_host = st.sidebar.text_input("Database Host", value=os.getenv("DB_HOST", "aws-0-us-east-1.pooler.supabase.com"))
+db_port = st.sidebar.text_input("Database Port", value=os.getenv("DB_PORT", "6543"))
+db_name = st.sidebar.text_input("Database Name", value=os.getenv("DB_NAME", "postgres"))
+db_user = st.sidebar.text_input("Database Username", value=os.getenv("DB_USER", "postgres.cbxagjoxdgzpfknkpswj"))
+db_password = st.sidebar.text_input("Database Password", value=os.getenv("DB_PASSWORD", "amit"), type="password")
 
 # Chain selection (this corresponds to the suffix in table names)
 chain = st.sidebar.text_input("Blockchain Chain", value=os.getenv("CHAIN", "base"))
@@ -158,8 +160,8 @@ if st.sidebar.button("Connect to Database"):
                                 hash, 
                                 number, 
                                 timestamp,
-                                gas_used, 
-                                gas_limit, 
+                                gasUsed, 
+                                gasLimit, 
                                 miner
                             FROM 
                                 blocks_{chain}
@@ -405,7 +407,7 @@ if st.session_state.get('connected', False):
                                     st.session_state.messages.append({
                                         "role": "assistant", 
                                         "content": message_content,
-                                        "dataframe": result_df
+                                        "dataframe": result_df 
                                     })
                                 else:
                                     st.write("The query returned no results.")

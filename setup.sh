@@ -38,4 +38,7 @@ echo "Instructions:"
 echo "1. Edit the .env file with your OpenAI API key and database credentials"
 echo "2. Make sure PostgreSQL is running"
 echo "3. Run 'python generate_data.py' to create the database and populate it with sample data"
-echo "4. Run 'streamlit run chat.py' to start the chat interface"
+echo "4. Run 'streamlit run sql_chat.py' to start the chat interface"
+
+echo "To install node dependencies" 
+echo "run : npm install dotenv pg openai chalk cli-table3 csv-writer readline"
