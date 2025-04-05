@@ -1,0 +1,15 @@
+{
+    "mcpServers": {
+      "sql_server": {
+        "command": "uv",
+        "args": [
+          "run",
+          "--with",
+          "mcp[cli]",
+          "mcp",
+          "run",
+          "sql_server.py"
+        ]
+      }
+    }
+  }

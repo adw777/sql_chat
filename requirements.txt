@@ -10,3 +10,5 @@ flask_cors
 openai
 flask
 flask-swagger-ui
+
+# MCP dependencies missing!
